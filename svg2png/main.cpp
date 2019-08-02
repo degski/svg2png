@@ -76,6 +76,7 @@ namespace fs = std::filesystem;
 */
 
 int main ( int argc_, char ** argv_ ) {
+
     float scale = 1.0;
     if ( 2 == argc_ )
         scale = std::atof ( argv_[ 1 ] );
