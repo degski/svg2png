@@ -15,7 +15,7 @@
 #include <list>
 #include <map>
 #include <random>
-#include <sax/iostream.hpp>
+#include <iostream>
 #include <string>
 #include <type_traits>
 #include <vector>
@@ -26,36 +26,39 @@ namespace fs = std::filesystem;
 #include <SFML/Graphics.hpp>
 #include <sfc/svg.hpp>
 
-/*
-#include <boost/algorithm/string/find.hpp>
-#include <boost/algorithm/string/replace.hpp>
+void replace_all ( std::string & input_, std::string const & from_, std::string const & to_ ) noexcept {
+    std::size_t pos = 0u;
+    while ( std::string::npos != ( pos = input_.find ( from_, pos ) ) ) {
+        input_.replace ( pos, from_.length ( ), to_ );
+        pos += to_.length ( );
+    }
+}
 
-[[maybe_unused]] std::string& wildcard_to_regex ( std::string& wild_card_ ) noexcept {
+[[maybe_unused]] std::string& wildcard_to_regex ( std::string & wild_card_ ) noexcept {
     // http://stackoverflow.com/questions/3300419/file-name-matching-with-wildcard
-    boost::replace_all ( wild_card_, "\\", "\\\\" );
-    boost::replace_all ( wild_card_, ".", "\\." );
-    boost::replace_all ( wild_card_, "+", "\\+" );
-    boost::replace_all ( wild_card_, "{", "\\{" );
-    boost::replace_all ( wild_card_, "}", "\\}" );
-    boost::replace_all ( wild_card_, "[", "\\[" );
-    boost::replace_all ( wild_card_, "]", "\\]" );
-    boost::replace_all ( wild_card_, "(", "\\(" );
-    boost::replace_all ( wild_card_, ")", "\\)" );
-    boost::replace_all ( wild_card_, "^", "\\^" );
-    boost::replace_all ( wild_card_, "$", "\\$" );
-    boost::replace_all ( wild_card_, "#", "\\#" );
-    boost::replace_all ( wild_card_, "/", "\\/" );
-    boost::replace_all ( wild_card_, " ", "\\ " );
-    boost::replace_all ( wild_card_, "	", "\\	" );
-    boost::replace_all ( wild_card_, "?", "." );
-    boost::replace_all ( wild_card_, "*", ".*" );
+    replace_all ( wild_card_, "\\", "\\\\" );
+    replace_all ( wild_card_, ".", "\\." );
+    replace_all ( wild_card_, "+", "\\+" );
+    replace_all ( wild_card_, "{", "\\{" );
+    replace_all ( wild_card_, "}", "\\}" );
+    replace_all ( wild_card_, "[", "\\[" );
+    replace_all ( wild_card_, "]", "\\]" );
+    replace_all ( wild_card_, "(", "\\(" );
+    replace_all ( wild_card_, ")", "\\)" );
+    replace_all ( wild_card_, "^", "\\^" );
+    replace_all ( wild_card_, "$", "\\$" );
+    replace_all ( wild_card_, "#", "\\#" );
+    replace_all ( wild_card_, "/", "\\/" );
+    replace_all ( wild_card_, " ", "\\ " );
+    replace_all ( wild_card_, "	", "\\	" );
+    replace_all ( wild_card_, "?", "." );
+    replace_all ( wild_card_, "*", ".*" );
     return wild_card_;
 }
 
 [[nodiscard]] bool is_wildcard ( std::string const & s_ ) noexcept {
-    return boost::find_first ( s_, "*" ) || boost::find_first ( s_, "?" );
+    return std::string::npos != s_.find ( "*" ) or std::string::npos != s_.find ( "?" );
 }
-*/
 
 int main ( int argc_, char ** argv_ ) {
 

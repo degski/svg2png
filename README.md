@@ -9,5 +9,3 @@ Commandline tool, taking one parameter (optionally), the scaling factor (default
 ## Dependencies
 
 * [sf-svg](https://github.com/kamirr/sf-svg)
-* [Boost](https://www.boost.org/)
-* [Sax](https://github.com/degski/Sax)
