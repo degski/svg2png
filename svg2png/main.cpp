@@ -56,9 +56,7 @@ void replace_all ( std::string & input_, std::string const & from_, std::string 
     return wild_card_;
 }
 
-[[nodiscard]] bool is_wildcard ( std::string const & s_ ) noexcept {
-    return std::string::npos != s_.find ( "*" ) or std::string::npos != s_.find ( "?" );
-}
+[[nodiscard]] bool is_wildcard ( std::string const & s_ ) noexcept { return std::string::npos != s_.find_first_of ( "*?" ); }
 
 int main ( int argc_, char ** argv_ ) {
 
